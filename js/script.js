@@ -1,19 +1,4 @@
-//$(document).ready(function() {
-//   $('.second_line__burger').click(function(event){
-//      $('.second_line__burger, .second-line__menu').toggleClass('active');
-//      $('body').toggleClass('lock');
-//      $('.header__zero').toggleClass('sheet');
-//   });
-//   $('.last_section__about_store__open').click(function(event){
-//      $('.last_section__about_store__open, ._section').toggleClass('active1');
-//   });
-//   $('.last_section__categories__open').click(function(event){
-//      $('.last_section__categories__open, ._section').toggleClass('active2');
-//   });
-//   $('.last_section__newsletter__open').click(function(event){
-//      $('.last_section__newsletter__open, ._section').toggleClass('active3');
-//   });
-//});
+"use strict";
 
 const iconMenu = document.querySelector('.header__burger');
 if (iconMenu){
@@ -27,14 +12,15 @@ if (iconMenu){
    })
 }
 
-const swiper = new Swiper('.new_arrivals_watch_box__swiper-container', {
+const swiper = new Swiper('.top-nft__swiper', {
    // Optional parameters
    //direction: 'vertical',
    //loop: true,
 
    //Кількість слайдів на перегляд (одночасно видимі слайди в контейнері повзунка).
-   //До використання цієї властивості в проекті з годжинником слайд був занадто широким
+   //До використання цієї властивості в проекті з годинником слайд був занадто широким
    slidesPerView: 'auto',
+   spaceBetween: '35.37',
 
    // If we need pagination
    //pagination: {
@@ -42,10 +28,10 @@ const swiper = new Swiper('.new_arrivals_watch_box__swiper-container', {
    //},
  
    // Navigation arrows
-   navigation: {
-     nextEl: '.swiper-button-next',
-     prevEl: '.swiper-button-prev',
-   },
+   //navigation: {
+   //  nextEl: '.swiper-button-next',
+   //  prevEl: '.swiper-button-prev',
+   //},
  
    // And if we need scrollbar
    //scrollbar: {
@@ -54,3 +40,47 @@ const swiper = new Swiper('.new_arrivals_watch_box__swiper-container', {
    //spaceBetween: 130,
    centeredSlides: true,
  });
+
+ 
+// ------------ T A B 's -----------------
+ let tab;
+ let tabContent;
+ window.onload = function () {
+   tab = document.getElementsByClassName('colection-section__tab');
+   tabContent = document.getElementsByClassName('colection-section__example');
+   hideTabContents(1);
+};
+
+function hideTabContents(a) {
+   for (let i = a; i < tabContent.length; i++) {
+      tab[i].classList.remove('_active-bottom');
+      tabContent[i].style.display = "none"; 
+   }   
+}
+let tabs = document.querySelector('.colection-section__tabs');
+let tabs1 = document.getElementById('colection-section__tabs1');
+console.log(tabs);
+console.log(tabs1);
+tabs.onclick = function (event) {
+   let target = event.target;
+   console.log(target);
+   if (target.className == 'colection-section__tab') {
+      for (let i = 0; i < tab.length; i++) {    
+         if (target == tab[i]) {
+            showTabContent(i);
+            break;
+         }    
+         
+      }
+   }
+   
+};
+function showTabContent(b) {
+      hideTabContents(0);
+      tab[b].classList.add('_active-bottom');
+      tabContent[b].style.display = 'block';
+   //   if (tab[b].classList.contains('_active-bottom') = false) {
+   //}
+}
+
+
