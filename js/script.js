@@ -13,31 +13,8 @@ if (iconMenu){
 }
 
 const swiper = new Swiper('.top-nft__swiper', {
-   // Optional parameters
-   //direction: 'vertical',
-   //loop: true,
-
-   //Кількість слайдів на перегляд (одночасно видимі слайди в контейнері повзунка).
-   //До використання цієї властивості в проекті з годинником слайд був занадто широким
    slidesPerView: 'auto',
    spaceBetween: '35.37',
-
-   // If we need pagination
-   //pagination: {
-   //  el: '.swiper-pagination',
-   //},
- 
-   // Navigation arrows
-   //navigation: {
-   //  nextEl: '.swiper-button-next',
-   //  prevEl: '.swiper-button-prev',
-   //},
- 
-   // And if we need scrollbar
-   //scrollbar: {
-   //  el: '.swiper-scrollbar',
-   //},
-   //spaceBetween: 130,
    centeredSlides: true,
  });
 
@@ -45,10 +22,24 @@ const swiper = new Swiper('.top-nft__swiper', {
 // ------------ T A B 's -----------------
  let tab;
  let tabContent;
- window.onload = function () {
+ 
+ const valueGrowth = document.getElementsByClassName('seler-card__growth');
+
+ window.onload = function tabS() {
    tab = document.getElementsByClassName('colection-section__tab');
    tabContent = document.getElementsByClassName('colection-section__example');
    hideTabContents(1);
+
+   //For section top-selers. Зміна колоьору
+   for (let i = 0; i < valueGrowth.length; i++) {
+      let x = valueGrowth[i].innerHTML;
+      let y = x.slice(0,-1);
+      if (y>0) {
+         valueGrowth[i].classList.add("_green");
+      } else {
+         valueGrowth[i].classList.add("_red")
+      }      
+   }
 };
 
 function hideTabContents(a) {
@@ -59,8 +50,6 @@ function hideTabContents(a) {
 }
 let tabs = document.querySelector('.colection-section__tabs');
 let tabs1 = document.getElementById('colection-section__tabs1');
-console.log(tabs);
-console.log(tabs1);
 tabs.onclick = function (event) {
    let target = event.target;
    console.log(target);
@@ -83,4 +72,11 @@ function showTabContent(b) {
    //}
 }
 
+const swiperArtWorkers = new Swiper('.art-workers__swiper', {
+   slidesPerView: 'auto',
+   spaceBetween: '35.37',
+   centeredSlides: true,
+ });
+
+// ------------COLOR SECTION--------------
 
